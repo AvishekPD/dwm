@@ -4,7 +4,7 @@ Dwm is a simple dynamic window manager for X windowing system.
 You can install it with using 
 ```make clean install``` <br>
 
-Also it can be auto install with the script [install.sh](https://github.com/AvishekPD/AvishekPD/install.sh) <br>
+Also it can be auto install with the script [install.sh](https://github.com/AvishekPD/AvishekPD/blob/main/install.sh) <br>
 
 ### KeyBinds 
 For the keybinds you can look down the Pic below, 
@@ -20,5 +20,6 @@ Feel free to modify and do what ever you want to do with this built of mine
 
 <p alight="center">
 	<img width="1000"
-	src"./preview.jpg"
+	alt="preview"
+	src"./preview.jpg">
 </p>
