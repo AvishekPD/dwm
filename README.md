@@ -19,7 +19,8 @@ Feel free to modify and do what ever you want to do with this built of mine.
 - Dark themed easy for eyes.
 
 <p alight="center">
-	<img width="1000"
+	<img width="800"
+	height="600'
 	alt="preview"
 	src="./preview.jpg">
 </p>
