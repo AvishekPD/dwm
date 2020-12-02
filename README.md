@@ -1,8 +1,8 @@
-## Dwm. A window manager for X
+# Dwm. A window manager for X
 
-Dwm is a simple dynamic window manager for X windowing system. <br>
+<p> Dwm is a simple dynamic window manager for X windowing system. <br>
 You can install it with using 
-```make clean install``` <br>
+`make clean install` <br>
 
 Also it can be auto install with the script to install my whole config [install.sh](https://github.com/AvishekPD/AvishekPD/blob/main/install.sh). <br> 
 
