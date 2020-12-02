@@ -20,5 +20,6 @@ Feel free to modify and do what ever you want to do with this built of mine.
 
 <p alight="center">
 	<img width="1000"
-	src"./preview.jpg">
+	alt="preview"
+	src="./preview.jpg">
 </p>
