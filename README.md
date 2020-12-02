@@ -4,7 +4,7 @@
 You can install it with using:
 
 ```shell
-$: make clean install <br>
+$: make clean install
 ```
 
 Also it can be auto install with the script to install my whole config [install.sh](https://github.com/AvishekPD/AvishekPD/blob/main/install.sh). <br> 
