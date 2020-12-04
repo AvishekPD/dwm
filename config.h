@@ -27,7 +27,7 @@ static const char *colors[][3]      = {
 /* autostart */
 static const char *const autostart[] = {
 	"/usr/bin/setxkbmap", "-option", "caps:escape", NULL, // set caps to escape 
-	"picom", "-b", "--blur-strength=4", NULL, // starts picom
+	"picom", "backend", "glx", "-b", "--blur-strength=4", NULL, // starts picom
 	NULL //terminates
 };
 
@@ -74,6 +74,7 @@ static const char *termcmd[]  = { "st", NULL };
 
 /* custom commands */
 static const char *browser[] = { "firefox", NULL};
+static const char *scrot[] = { "scrot", NULL};
 
 /* keybinds */
 static Key keys[] = {
@@ -81,6 +82,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Tab,    spawn,          {.v = dmenucmd } },
 	{ MODKEY,	                XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY, 			XK_f,	   spawn,	   {.v = browser } },
+	{ MODKEY,			XK_Print,  spawn, 	   {.v = scrot} },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
