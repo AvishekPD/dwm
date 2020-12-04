@@ -27,7 +27,7 @@ static const char *colors[][3]      = {
 /* autostart */
 static const char *const autostart[] = {
 	"/usr/bin/setxkbmap", "-option", "caps:escape", NULL, // set caps to escape 
-	"picom", "-b", NULL, // starts picom
+	"picom", "-b", "--blur-strength=4", NULL, // starts picom
 	NULL //terminates
 };
 
