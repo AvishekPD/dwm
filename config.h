@@ -37,7 +37,7 @@ static const char *const autostart[] = {
 };
 
 /* tagging */
-static const char *tags[] = { "", "", "", "", "" };
+static const char *tags[] = { "", "", "", "", "" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -56,8 +56,8 @@ static const int resizehints = 0;    /* 1 means respect size hints in tiled resi
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[]=",      tile },    /* first entry is default */
-	{ "><>",      NULL },    /* no layout function means floating behavior */
+	{ "",      tile },    /* first entry is default */
+	{ "",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
 };
 
