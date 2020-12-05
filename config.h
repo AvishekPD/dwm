@@ -6,7 +6,7 @@ static const int gappx		    = 10;	/* gaps between teh windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Jetbrains Mono:size=11:hinting=1","JoyPixels:size=10" };
+static const char *fonts[]          ={ "Jetbrains Mono:pixelsize=13.69:autohint=true", "Font Awesome 5 Free:pixelsize=13:autohint=1", "Font Awesome 5 Brands:pixelsize=13:autohint=1", "Font Awesome 5 Free:pixelsize=13:style=solid:autohint=1"};
 static const char dmenufont[]       = "JetBrains Mono:size=10";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
@@ -26,13 +26,14 @@ static const char *colors[][3]      = {
 
 /* autostart */
 static const char *const autostart[] = {
+	"dwmblocks", NULL, //dwmblocks
 	"/usr/bin/setxkbmap", "-option", "caps:escape", NULL, // set caps to escape 
-	"picom", "backend", "glx", "-b", "--blur-strength=4", NULL, // starts picom
+	"picom", "-b", "--backend", "glx", "--blur-strength", "4", NULL, // starts picom
 	NULL //terminates
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5" };
+static const char *tags[] = { "", "", "", "", "" };
 
 static const Rule rules[] = {
 	/* xprop(1):
