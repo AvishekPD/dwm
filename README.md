@@ -15,7 +15,7 @@ For the keybinds you can look down the Pic below,
 
 Feel free to modify and do what ever you want to do with this built of mine.
 
-Ps: I've included my wallpaper named [picture.jpg](https://raw.githubusercontent.com/AvishekPD/dwm/picture.jpg).
+Ps: I've included my wallpaper named [picture.jpg](https://github.com/AvishekPD/dwm/blob/main/picture.jpg).
 
 ## Features 
 - Not bloated, Yet.
