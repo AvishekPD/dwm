@@ -79,7 +79,7 @@ static const char *termcmd[]  = { "st", NULL };
 
 /* custom commands */
 static const char *browser[] = { "firefox", NULL};
-static const char *scrot[] = { "scrot", NULL};
+static const char *scrot[] = { "/usr/bin/scrot", "'%Y-%m-%d.png'", "-e", "'mv", "$f", "~/Picture/Screenshots'", NULL};
 
 /* keybinds */
 static Key keys[] = {
@@ -87,7 +87,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Tab,    spawn,          {.v = dmenucmd } },
 	{ MODKEY,	                XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY, 			XK_f,	   spawn,	   {.v = browser } },
-	{ MODKEY,			XK_Print,  spawn, 	   {.v = scrot} },
+	{ MODKEY,			XK_Print,  spawn, 	   {.v = scrot } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
