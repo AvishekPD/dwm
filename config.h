@@ -6,6 +6,9 @@ static const int gappx		    = 5;	/* gaps between teh windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
+static const int bar_h              = 24;        /* 0 for dwm to auto decide bar height */ 
+unsigned static const int vertpad   = 3;	/* vertical padding of the bar */
+unsigned static const int sidepad   = 5;	/* horizontal padding of the bar */
 static const char *fonts[]          ={  "Jetbrains Mono:pixelsize=13.69:autohint=true", 
 					"Font Awesome 5 Free:pixelsize=13:autohint=1", 
 					"Font Awesome 5 Brands:pixelsize=13:autohint=1", 
@@ -23,9 +26,14 @@ static const char col_border2[]	    = "#111111";
 static const char col_cyan[]        = "#005577";
 static const char col_trans[]	    = "#0000FF";
 static const char *colors[][3]      = {
-	/*               fg         bg         border   */
-	[SchemeNorm] = { col_barfg, col_barbg, col_border2},
-	[SchemeSel]  = { col_barfg, col_barbg,  col_border1},
+	/*                  fg         bg         border   */
+	[SchemeNorm]        = { col_barfg, col_barbg, col_border2 },
+	[SchemeSel]         = { col_barfg, col_barbg,  col_border1 },
+    [SchemeStatus]      = { col_barfg, col_barbg, NULL },  /*  for border !used but !empty */
+    [SchemeTagsNorm]    = { col_barfg, col_barbg, NULL },
+    [SchemeTagsSel]     = { col_barbg, col_barfg, NULL },
+    [SchemeInfoNorm]    = { col_barfg, col_barbg, NULL },
+    [SchemeInfoSel]     = { col_barbg, col_barbg, NULL },
 };
 
 /* autostart */
