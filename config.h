@@ -2,13 +2,13 @@
 
 /* appearance */
 static const unsigned int borderpx  = 3;        /* border pixel of windows */
-static const int gappx		    = 5;	/* gaps between teh windows */
+static const int gappx		        = 5;	    /* gaps between teh windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int bar_h              = 24;        /* 0 for dwm to auto decide bar height */ 
-unsigned static const int vertpad   = 5;	/* vertical padding of the bar */
-unsigned static const int sidepad   = 5;	/* horizontal padding of the bar */
+static const unsigned int vertpad   = 5;	    /* vertical padding of the bar */
+static const unsigned int sidepad   = 5;	    /* horizontal padding of the bar */
 static const char *fonts[]          ={  "Jetbrains Mono:pixelsize=13.69:autohint=true", 
 					"Font Awesome 5 Free:pixelsize=13:autohint=1", 
 					"Font Awesome 5 Brands:pixelsize=13:autohint=1", 
@@ -93,9 +93,9 @@ static const char *scrot[] = { "/usr/bin/scrot", "'%Y-%m-%d.png'", "-e", "'mv", 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_Tab,    spawn,          {.v = dmenucmd } },
-	{ MODKEY,	                XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY, 			XK_f,	   spawn,	   {.v = browser } },
-	{ MODKEY,			XK_Print,  spawn, 	   {.v = scrot } },
+	{ MODKEY,	                    XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY, 			            XK_f,	   spawn,	       {.v = browser } },
+	{ MODKEY,			            XK_Print,  spawn, 	       {.v = scrot } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -105,7 +105,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_p,      view,           {0} },
-	{ MODKEY,             		XK_x,      killclient,     {0} },
+	{ MODKEY,             		    XK_x,      killclient,     {0} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
@@ -114,9 +114,9 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	{ MODKEY, 			XK_minus,  setgaps, 	   {.i = -5 } },
-	{ MODKEY,			XK_equal,  setgaps, 	   {.i = +5 } },
-	{ MODKEY|ShiftMask,		XK_equal,  setgaps, 	   {.i = 0 } },
+	{ MODKEY, 			            XK_minus,  setgaps, 	   {.i = -5 } },
+	{ MODKEY,			            XK_equal,  setgaps, 	   {.i = +5 } },
+	{ MODKEY|ShiftMask,		        XK_equal,  setgaps, 	   {.i = 0 } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
