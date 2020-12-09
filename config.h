@@ -7,7 +7,7 @@ static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int bar_h              = 24;        /* 0 for dwm to auto decide bar height */ 
-unsigned static const int vertpad   = 3;	/* vertical padding of the bar */
+unsigned static const int vertpad   = 5;	/* vertical padding of the bar */
 unsigned static const int sidepad   = 5;	/* horizontal padding of the bar */
 static const char *fonts[]          ={  "Jetbrains Mono:pixelsize=13.69:autohint=true", 
 					"Font Awesome 5 Free:pixelsize=13:autohint=1", 
