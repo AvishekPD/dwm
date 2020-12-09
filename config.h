@@ -10,9 +10,9 @@ static const int bar_h              = 24;        /* 0 for dwm to auto decide bar
 static const unsigned int vertpad   = 5;	    /* vertical padding of the bar */
 static const unsigned int sidepad   = 5;	    /* horizontal padding of the bar */
 static const char *fonts[]          ={  "Jetbrains Mono:pixelsize=13.69:autohint=true", 
-					"Font Awesome 5 Free:pixelsize=13:autohint=1", 
-					"Font Awesome 5 Brands:pixelsize=13:autohint=1", 
-					"Font Awesome 5 Free:pixelsize=13:style=solid:autohint=1"
+					                    "Font Awesome 5 Free:pixelsize=13:autohint=1", 
+					                    "Font Awesome 5 Brands:pixelsize=13:autohint=1", 
+					                    "Font Awesome 5 Free:pixelsize=13:style=solid:autohint=1"   
 };
 static const char dmenufont[]       = "JetBrains Mono:size=10";
 static const char col_gray1[]       = "#222222";
@@ -87,41 +87,51 @@ static const char *termcmd[]  = { "st", NULL };
 
 /* custom commands */
 static const char *browser[] = { "firefox", NULL};
-static const char *scrot[] = { "/usr/bin/scrot", "'%Y-%m-%d.png'", "-e", "'mv", "$f", "~/Picture/Screenshots'", NULL};
+static const char *scrot[] = { "/usr/bin/scrot", "'%Y-%m-%d.png'", "-e", "'mv", "$f", "\"/home/smrg/Picture/Screenshot\"", NULL};
+static const char *upbright[] = { "/usr/bin/xbacklight", "-inc", "10", NULL };
+static const char *downbright[] = { "/usr/bin/xbacklight", "-dec", "10", NULL };
+static const char *volup[] = { "/usr/bin/pactl", "set-sink-volume", "0", "+5%", NULL };
+static const char *voldown[] = { "/usr/bin/pactl", "set-sink-volume", "0", "-5%", NULL };
+static const char *volmute[] = { "/usr/bin/pactl", "set-sink-mute", "0", "toggle", NULL };
 
 /* keybinds */
 static Key keys[] = {
-	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_Tab,    spawn,          {.v = dmenucmd } },
-	{ MODKEY,	                    XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY, 			            XK_f,	   spawn,	       {.v = browser } },
-	{ MODKEY,			            XK_Print,  spawn, 	       {.v = scrot } },
-	{ MODKEY,                       XK_b,      togglebar,      {0} },
-	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
-	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
-	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
-	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} },
-	{ MODKEY,                       XK_p,      view,           {0} },
-	{ MODKEY,             		    XK_x,      killclient,     {0} },
-	{ MODKEY,                       XK_space,  setlayout,      {0} },
-	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
-	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
-	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
-	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
-	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	{ MODKEY, 			            XK_minus,  setgaps, 	   {.i = -5 } },
-	{ MODKEY,			            XK_equal,  setgaps, 	   {.i = +5 } },
-	{ MODKEY|ShiftMask,		        XK_equal,  setgaps, 	   {.i = 0 } },
-	TAGKEYS(                        XK_1,                      0)
-	TAGKEYS(                        XK_2,                      1)
-	TAGKEYS(                        XK_3,                      2)
-	TAGKEYS(                        XK_4,                      3)
-	TAGKEYS(                        XK_5,                      4)
+	/* modifier                     key                         function        argument */
+	{ MODKEY,                       XK_Tab,                     spawn,          {.v = dmenucmd } },
+	{ MODKEY,	                    XK_Return,                  spawn,          {.v = termcmd } },
+	{ MODKEY, 			            XK_f,	                    spawn,	        {.v = browser } },
+	{ MODKEY,			            XK_Print,                   spawn, 	        {.v = scrot } },
+    { 0,                            XF86XK_AudioRaiseVolume,    spawn,          {.v = volup} },
+    { 0,                            XF86XK_AudioLowerVolume,    spawn,          {.v = voldown} },
+    { 0,                            XF86XK_AudioMute,           spawn,          {.v = volmute} },
+    { 0,                            XF86XK_MonBrightnessUp,     spawn,          {.v = upbright} },
+    { 0,                            XF86XK_MonBrightnessDown,   spawn,          {.v = downbright} },
+	{ MODKEY,                       XK_b,                       togglebar,      {0} },
+	{ MODKEY,                       XK_j,                       focusstack,     {.i = +1 } },
+	{ MODKEY,                       XK_k,                       focusstack,     {.i = -1 } },
+	{ MODKEY,                       XK_i,                       incnmaster,     {.i = +1 } },
+	{ MODKEY,                       XK_d,                       incnmaster,     {.i = -1 } },
+	{ MODKEY,                       XK_h,                       setmfact,       {.f = -0.05} },
+	{ MODKEY,                       XK_l,                       setmfact,       {.f = +0.05} },
+	{ MODKEY|ShiftMask,             XK_Return,                  zoom,           {0} },
+	{ MODKEY,                       XK_p,                       view,           {0} },
+	{ MODKEY,             		    XK_x,                       killclient,     {0} },
+	{ MODKEY,                       XK_space,                   setlayout,      {0} },
+	{ MODKEY|ShiftMask,             XK_space,                   togglefloating, {0} },
+	{ MODKEY,                       XK_0,                       view,           {.ui = ~0 } },
+	{ MODKEY|ShiftMask,             XK_0,                       tag,            {.ui = ~0 } },
+	{ MODKEY,                       XK_comma,                   focusmon,       {.i = -1 } },
+	{ MODKEY,                       XK_period,                  focusmon,       {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_comma,                   tagmon,         {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_period,                  tagmon,         {.i = +1 } },
+	{ MODKEY, 			            XK_minus,                   setgaps, 	    {.i = -5 } },
+	{ MODKEY,			            XK_equal,                   setgaps, 	    {.i = +5 } },
+	{ MODKEY|ShiftMask,		        XK_equal,                   setgaps, 	    {.i = 0 } },
+	TAGKEYS(                        XK_1,                                       0)
+	TAGKEYS(                        XK_2,                                       1)
+	TAGKEYS(                        XK_3,                                       2)
+	TAGKEYS(                        XK_4,                                       3)
+	TAGKEYS(                        XK_5,                                       4)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 	{ MODKEY|ControlMask|ShiftMask,	XK_q,	   quit,	   {1} },
 };
