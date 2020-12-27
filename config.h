@@ -28,7 +28,7 @@ static const char col_trans[]	    = "#0000FF";
 static const char *colors[][3]      = {
 	/*                  fg         bg         border   */
 	[SchemeNorm]        = { col_barfg, col_barbg, col_border2 },
-	[SchemeSel]         = { col_barfg, col_barbg,  col_border1 },
+	[SchemeSel]         = { col_barfg, col_barbg, col_border1 },
     [SchemeStatus]      = { col_barfg, col_barbg, NULL },  /*  for border !used but !empty */
     [SchemeTagsNorm]    = { col_barfg, col_barbg, NULL },
     [SchemeTagsSel]     = { col_barbg, col_barfg, NULL },
@@ -40,7 +40,7 @@ static const char *colors[][3]      = {
 static const char *const autostart[] = {
 	"dwmblocks", NULL, //dwmblocks
 	"/usr/bin/setxkbmap", "-option", "caps:escape", NULL, // set caps to escape 
-	"/usr/bin/picom", "-b", NULL, // starts picom
+	"/usr/bin/picom", "-b", "--config", "/home/smrg/.config/picom/dwm.picom.conf/", NULL, // starts picom
 	NULL //terminates
 };
 
@@ -78,7 +78,7 @@ static const Layout layouts[] = {
 	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
-#define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
+#define SHCMD(cmd) { .v = (const char*[]){ "/bin/zsh", "-c", cmd, NULL } }
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
@@ -87,7 +87,7 @@ static const char *termcmd[]  = { "st", NULL };
 
 /* custom commands */
 static const char *browser[] = { "firefox", NULL};
-static const char *scrot[] = { "/usr/bin/scrot", "'%Y-%m-%d.png'", "-e", "'mv", "$f", "\"/home/smrg/Picture/Screenshot\"", NULL};
+static const char *scrot[] = { "/usr/bin/scrot", "-e", "'mv", "$f", "~/Picture/Screenshot/'", NULL};
 static const char *upbright[] = { "/usr/bin/xbacklight", "-inc", "10", NULL };
 static const char *downbright[] = { "/usr/bin/xbacklight", "-dec", "10", NULL };
 static const char *volup[] = { "/usr/bin/pactl", "set-sink-volume", "0", "+5%", NULL };
