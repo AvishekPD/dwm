@@ -40,7 +40,7 @@ static const char *colors[][3]      = {
 static const char *const autostart[] = {
 	"dwmblocks", NULL, //dwmblocks
 	"/usr/bin/setxkbmap", "-option", "caps:escape", NULL, // set caps to escape 
-	"/usr/bin/picom", "-b", "--config", "/home/smrg/.config/picom/dwm.picom.conf/", NULL, // starts picom
+	"/usr/bin/picom", "-b", "--config", "/home/smrg/.config/picom/dwm.picom.conf", NULL, // starts picom
 	NULL //terminates
 };
 
