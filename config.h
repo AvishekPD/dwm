@@ -1,19 +1,19 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 3;        /* border pixel of windows */
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const int gappx		        = 5;	    /* gaps between teh windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const int bar_h              = 24;        /* 0 for dwm to auto decide bar height */ 
+static const int bar_h              = 24;       /* 0 for dwm to auto decide bar height */ 
 static const unsigned int vertpad   = 5;	    /* vertical padding of the bar */
 static const unsigned int sidepad   = 5;	    /* horizontal padding of the bar */
 static const char *fonts[]          ={  "Jetbrains Mono:pixelsize=13.69:autohint=true", 
 					                    "Font Awesome 5 Free:pixelsize=13:autohint=1", 
 					                    "Font Awesome 5 Brands:pixelsize=13:autohint=1", 
 					                    "Font Awesome 5 Free:pixelsize=13:style=solid:autohint=1"   
-};
+                                    };
 static const char dmenufont[]       = "JetBrains Mono:size=10";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
@@ -45,7 +45,7 @@ static const char *const autostart[] = {
 };
 
 /* tagging */
-static const char *tags[] = { "", "", "", "", "" };
+static const char *tags[] = { "", "", "", "", "" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -86,13 +86,13 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "st", NULL };
 
 /* custom commands */
-static const char *browser[] = { "firefox", NULL};
-static const char *scrot[] = { "/usr/bin/scrot", "-e", "'mv", "$f", "~/Picture/Screenshot/'", NULL};
-static const char *upbright[] = { "/usr/bin/xbacklight", "-inc", "10", NULL };
+static const char *browser[]    = { "firefox", NULL};
+static const char *scrot[]      = { "/usr/bin/scrot", "-e", "'mv", "$f", "~/Picture/Screenshot/'", NULL};
+static const char *upbright[]   = { "/usr/bin/xbacklight", "-inc", "10", NULL };
 static const char *downbright[] = { "/usr/bin/xbacklight", "-dec", "10", NULL };
-static const char *volup[] = { "/usr/bin/pactl", "set-sink-volume", "0", "+5%", NULL };
-static const char *voldown[] = { "/usr/bin/pactl", "set-sink-volume", "0", "-5%", NULL };
-static const char *volmute[] = { "/usr/bin/pactl", "set-sink-mute", "0", "toggle", NULL };
+static const char *volup[]      = { "/usr/bin/pactl", "set-sink-volume", "0", "+5%", NULL };
+static const char *voldown[]    = { "/usr/bin/pactl", "set-sink-volume", "0", "-5%", NULL };
+static const char *volmute[]    = { "/usr/bin/pactl", "set-sink-mute", "0", "toggle", NULL };
 
 /* keybinds */
 static Key keys[] = {
@@ -132,8 +132,8 @@ static Key keys[] = {
 	TAGKEYS(                        XK_3,                                       2)
 	TAGKEYS(                        XK_4,                                       3)
 	TAGKEYS(                        XK_5,                                       4)
-	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
-	{ MODKEY|ControlMask|ShiftMask,	XK_q,	   quit,	   {1} },
+	{ MODKEY|ShiftMask,             XK_q,                       quit,           {0} },
+	{ MODKEY|ControlMask|ShiftMask,	XK_q,	                    quit,	        {1} },
 };
 
 /* button definitions */
