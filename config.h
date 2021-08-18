@@ -55,6 +55,7 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+    { "Tilda",    NULL,       NULL,       0,            1,           -1 },
 };
 
 /* layout(s) */
@@ -87,12 +88,13 @@ static const char *termcmd[]  = { "st", NULL };
 
 /* custom commands */
 static const char *browser[]    = { "firefox", NULL};
-static const char *scrot[]      = { "/usr/bin/scrot", "-e", "'mv", "$f", "~/Picture/Screenshot/'", NULL};
-static const char *upbright[]   = { "/usr/bin/xbacklight", "-inc", "10", NULL };
-static const char *downbright[] = { "/usr/bin/xbacklight", "-dec", "10", NULL };
+//static const char *scrot[]      = { "/usr/bin/scrot", "-e", "'mv", "$f", "~/Picture/Screenshot/'", NULL};
+static const char *upbright[]   = { "/usr/bin/xbacklight", "-inc", "5", NULL };
+static const char *downbright[] = { "/usr/bin/xbacklight", "-dec", "5", NULL };
 static const char *volup[]      = { "/usr/bin/pactl", "set-sink-volume", "0", "+5%", NULL };
 static const char *voldown[]    = { "/usr/bin/pactl", "set-sink-volume", "0", "-5%", NULL };
 static const char *volmute[]    = { "/usr/bin/pactl", "set-sink-mute", "0", "toggle", NULL };
+static const char *ytdmenu[]    = { "/usr/bin/ytfzf", "-D", NULL };
 
 /* keybinds */
 static Key keys[] = {
@@ -100,7 +102,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Tab,                     spawn,          {.v = dmenucmd } },
 	{ MODKEY,	                    XK_Return,                  spawn,          {.v = termcmd } },
 	{ MODKEY, 			            XK_f,	                    spawn,	        {.v = browser } },
-	{ MODKEY,			            XK_Print,                   spawn, 	        {.v = scrot } },
+//	{ MODKEY,			            XK_Print,                   spawn, 	        {.v = scrot } },
+	{ MODKEY,                       XK_y,                       spawn,          {.v = ytdmenu } },
     { 0,                            XF86XK_AudioRaiseVolume,    spawn,          {.v = volup} },
     { 0,                            XF86XK_AudioLowerVolume,    spawn,          {.v = voldown} },
     { 0,                            XF86XK_AudioMute,           spawn,          {.v = volmute} },
