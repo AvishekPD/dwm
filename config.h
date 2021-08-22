@@ -9,6 +9,7 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const int bar_h              = 24;       /* 0 for dwm to auto decide bar height */ 
 static const unsigned int vertpad   = 5;	    /* vertical padding of the bar */
 static const unsigned int sidepad   = 5;	    /* horizontal padding of the bar */
+static const Bool viewonmove        = True;      /* move view when change tag */
 static const char *fonts[]          ={  "Jetbrains Mono:pixelsize=13.69:autohint=true", 
 					                    "Font Awesome 5 Free:pixelsize=13:autohint=1", 
 					                    "Font Awesome 5 Brands:pixelsize=13:autohint=1", 
@@ -21,6 +22,7 @@ static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
 static const char col_barbg[]	    = "#111111";
 static const char col_barfg[]	    = "#707070";
+static const char col_demonsel[]    = "#202020";
 static const char col_border1[]	    = "#717171";
 static const char col_border2[]	    = "#111111";
 static const char col_cyan[]        = "#005577";
@@ -83,7 +85,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_barbg , "-nf", col_barfg , "-sb", col_demonsel , "-sf", col_barfg , NULL };
 static const char *termcmd[]  = { "st", NULL };
 
 /* custom commands */
