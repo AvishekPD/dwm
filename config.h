@@ -6,10 +6,12 @@ static const int gappx		        = 5;	    /* gaps between teh windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const int bar_h              = 24;       /* 0 for dwm to auto decide bar height */ 
+static const int bar_h              = 28;       /* 0 for dwm to auto decide bar height */ 
+static const int horizpadbar        = 5;        /* horizontal padding in statusbar */
+static const int vertpadbar         = 11;        /* vertical padding in statusbar */
 static const unsigned int vertpad   = 5;	    /* vertical padding of the bar */
 static const unsigned int sidepad   = 5;	    /* horizontal padding of the bar */
-static const Bool viewonmove        = True;      /* move view when change tag */
+static const Bool viewonmove        = True;     /* move view when change tag */
 static const char *fonts[]          ={  "Jetbrains Mono:pixelsize=13.69:autohint=true", 
 					                    "Font Awesome 5 Free:pixelsize=13:autohint=1", 
 					                    "Font Awesome 5 Brands:pixelsize=13:autohint=1", 
@@ -22,7 +24,7 @@ static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
 static const char col_barbg[]	    = "#111111";
 static const char col_barfg[]	    = "#707070";
-static const char col_demonsel[]    = "#202020";
+static const char col_sel[]         = "#202020";
 static const char col_border1[]	    = "#717171";
 static const char col_border2[]	    = "#111111";
 static const char col_cyan[]        = "#005577";
@@ -33,16 +35,13 @@ static const char *colors[][3]      = {
 	[SchemeSel]         = { col_barfg, col_barbg, col_border1 },
     [SchemeStatus]      = { col_barfg, col_barbg, NULL },  /*  for border !used but !empty */
     [SchemeTagsNorm]    = { col_barfg, col_barbg, NULL },
-    [SchemeTagsSel]     = { col_barbg, col_barfg, NULL },
+    [SchemeTagsSel]     = { col_barfg, col_sel,   NULL },
     [SchemeInfoNorm]    = { col_barfg, col_barbg, NULL },
     [SchemeInfoSel]     = { col_barbg, col_barbg, NULL },
 };
 
 /* autostart */
 static const char *const autostart[] = {
-	"dwmblocks", NULL, //dwmblocks
-	"/usr/bin/setxkbmap", "-option", "caps:escape", NULL, // set caps to escape 
-	"/usr/bin/picom", "-b", "--config", "/home/smrg/.config/picom/dwm.picom.conf", NULL, // starts picom
 	NULL //terminates
 };
 
@@ -85,11 +84,11 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_barbg , "-nf", col_barfg , "-sb", col_demonsel , "-sf", col_barfg , NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_barbg , "-nf", col_barfg , "-sb", col_sel , "-sf", col_barfg , NULL };
 static const char *termcmd[]  = { "st", NULL };
 
 /* custom commands */
-static const char *browser[]    = { "firefox", NULL};
+static const char *browser[]    = { "qutebrowser", NULL};
 //static const char *scrot[]      = { "/usr/bin/scrot", "-e", "'mv", "$f", "~/Picture/Screenshot/'", NULL};
 static const char *upbright[]   = { "/usr/bin/xbacklight", "-inc", "5", NULL };
 static const char *downbright[] = { "/usr/bin/xbacklight", "-dec", "5", NULL };

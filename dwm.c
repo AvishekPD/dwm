@@ -240,7 +240,6 @@ static int xerrordummy(Display *dpy, XErrorEvent *ee);
 static int xerrorstart(Display *dpy, XErrorEvent *ee);
 static void zoom(const Arg *arg);
 static void autostart_exec(void);
-
 /* variables */
 static const char broken[] = "broken";
 static char stext[256];
@@ -743,8 +742,8 @@ drawbar(Monitor *m)
 	/* draw status first so it can be overdrawn by tags later */
 	if (m == selmon) { /* status is only drawn on selected monitor */
 		drw_setscheme(drw, scheme[SchemeStatus]);
-		tw = TEXTW(stext) - lrpad + 2; /* 2px right padding */
-		drw_text(drw, m->ww - tw - 2 * sp, 0, tw, bh, 0, stext, 0);
+		tw = TEXTW(stext); /* 2px right padding */
+		drw_text(drw, m->ww - tw - 2 * sp, 0, tw, bh, lrpad / 2, stext, 0);
 	}
 
 	for (c = m->clients; c; c = c->next) {
@@ -1613,8 +1612,8 @@ setup(void)
 	drw = drw_create(dpy, screen, root, sw, sh);
 	if (!drw_fontset_create(drw, fonts, LENGTH(fonts)))
 		die("no fonts could be loaded.");
-	lrpad = drw->fonts->h;
-	bh = bar_h ? bar_h : drw->fonts->h + 2;
+	lrpad = drw->fonts->h + horizpadbar;
+	bh = bar_h ? bar_h : drw->fonts->h + vertpadbar;
 	updategeom();
     sp = sidepad;
     vp = (topbar == 1) ? vertpad : - vertpad;
