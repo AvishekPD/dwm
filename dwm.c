@@ -762,6 +762,7 @@ drawbar(Monitor *m)
 	int x, w, tw = 0;
 	int boxs = drw->fonts->h / 9;
 	int boxw = drw->fonts->h / 6 + 2;
+    int mul = 2;
 	unsigned int i, occ = 0, urg = 0;
 	Client *c;
 
@@ -784,10 +785,16 @@ drawbar(Monitor *m)
 		drw_text(drw, x, 0, w, bh, lrpad / 2, tags[i], urg & 1 << i);
         if (unlineall || m->tagset[m->seltags] & 1 << i)
             drw_rect(drw, x + ulinepad, bh - ulinestroke - ulinevoffset, w - (ulinepad * 2), ulinestroke, 1, 0);
-        if (occ & 1 << i) 
+        if (unlineall || m->tagset[m->seltags] & 1 << i)
+            mul = 0;
+            if (occ & 1 << i)
+                drw_rect(drw, x + boxw, boxw - (2 * boxs), w - (2 * boxw), boxs * mul,
+                    m == selmon && selmon->sel && selmon->sel->tags & 1 << i,
+                    urg & 1 << i); 
+        /* if (occ & 1 << i) 
             drw_rect(drw, x + boxw, boxw - (2 * boxs), w - (2 * boxw), boxs * 2,
                 m == selmon && selmon->sel && selmon->sel->tags & 1 << i,
-                urg & 1 << i); 
+                urg & 1 << i); */
 		x += w;
 	} 
 	w = blw = TEXTW(m->ltsymbol);
