@@ -12,10 +12,12 @@ static const int vertpadbar         = 11;        /* vertical padding in statusba
 static const unsigned int vertpad   = 5;	    /* vertical padding of the bar */
 static const unsigned int sidepad   = 5;	    /* horizontal padding of the bar */
 static const Bool viewonmove        = True;     /* move view when change tag */
-static const char *fonts[]          ={  "Jetbrains Mono:pixelsize=13.69:autohint=true", 
-					                    "Font Awesome 5 Free:pixelsize=13:autohint=1", 
+static const char *fonts[]          ={  
+                                        "Jetbrains Mono:pixelsize=11.69:autohint=true", 
+                                        "Nikkyou Sans:pixelsize=17:autohint=true",
+					                    /*"Font Awesome 5 Free:pixelsize=13:autohint=1", 
 					                    "Font Awesome 5 Brands:pixelsize=13:autohint=1", 
-					                    "Font Awesome 5 Free:pixelsize=13:style=solid:autohint=1"   
+					                    "Font Awesome 5 Free:pixelsize=13:style=solid:autohint=1"   */
                                     };
 static const char dmenufont[]       = "JetBrains Mono:size=10";
 static const char col_gray1[]       = "#222222";
@@ -46,7 +48,13 @@ static const char *const autostart[] = {
 };
 
 /* tagging */
-static const char *tags[] = { "", "", "", "", "" };
+static const char *tags[] = { "1:work", "2:Culture", "3:Social", "4:Moosic", "5:Egg" };
+
+/* line under active tag */
+static const unsigned int ulinepad      = 5; /* horizontal padding between underline and tag */
+static const unsigned int ulinestroke   = 2; /* height of the underline */
+static const unsigned int ulinevoffset   = 0; /* how far the bottom of bar the ine should apper */
+static const int unlineall              = 0; /* 1 to show underline on all tag / 0 for active ones */
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -66,8 +74,8 @@ static const int resizehints = 0;    /* 1 means respect size hints in tiled resi
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "",      tile },    /* first entry is default */
-	{ "",      NULL },    /* no layout function means floating behavior */
+	{ "",      tile },    /* first entry is default */
+	{ "",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
 };
 
