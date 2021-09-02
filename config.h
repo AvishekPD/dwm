@@ -13,11 +13,10 @@ static const unsigned int vertpad   = 5;	    /* vertical padding of the bar */
 static const unsigned int sidepad   = 5;	    /* horizontal padding of the bar */
 static const Bool viewonmove        = True;     /* move view when change tag */
 static const char *fonts[]          ={  
-                                        "Jetbrains Mono:pixelsize=11.69:autohint=true", 
-                                        "Nikkyou Sans:pixelsize=17:autohint=true",
-					                    /*"Font Awesome 5 Free:pixelsize=13:autohint=1", 
+                                        "Jetbrains Mono:pixelsize=12.69:autohint=true", 
+					                    "Font Awesome 5 Free:pixelsize=13:autohint=1", 
 					                    "Font Awesome 5 Brands:pixelsize=13:autohint=1", 
-					                    "Font Awesome 5 Free:pixelsize=13:style=solid:autohint=1"   */
+					                    "Font Awesome 5 Free:pixelsize=13:style=solid:autohint=1"  
                                     };
 static const char dmenufont[]       = "JetBrains Mono:size=10";
 static const char col_gray1[]       = "#222222";
@@ -74,8 +73,8 @@ static const int resizehints = 0;    /* 1 means respect size hints in tiled resi
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "",      tile },    /* first entry is default */
-	{ "",      NULL },    /* no layout function means floating behavior */
+	{ "<T>",      tile },    /* first entry is default */
+	{ "<>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
 };
 
@@ -95,9 +94,12 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_barbg , "-nf", col_barfg , "-sb", col_sel , "-sf", col_barfg , NULL };
 static const char *termcmd[]  = { "st", NULL };
 
+// Helper for spawning command
+#define CALLCMD(cmd) { .v = (const char*[]){"/bin/sh", "-c", cmd ,NULL} }
+
 /* custom commands */
 static const char *browser[]    = { "qutebrowser", NULL};
-//static const char *scrot[]      = { "/usr/bin/scrot", "-e", "'mv", "$f", "~/Picture/Screenshot/'", NULL};
+//static const char *ss[]         = { "/usr/bin/maim", "-s", "|", "xclip", "-selection", "c", "-t", "image/png" ,NULL};
 static const char *upbright[]   = { "/usr/bin/xbacklight", "-inc", "5", NULL };
 static const char *downbright[] = { "/usr/bin/xbacklight", "-dec", "5", NULL };
 static const char *volup[]      = { "/usr/bin/pactl", "set-sink-volume", "0", "+5%", NULL };
@@ -111,7 +113,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Tab,                     spawn,          {.v = dmenucmd } },
 	{ MODKEY,	                    XK_Return,                  spawn,          {.v = termcmd } },
 	{ MODKEY, 			            XK_f,	                    spawn,	        {.v = browser } },
-//	{ MODKEY,			            XK_Print,                   spawn, 	        {.v = scrot } },
+	{ 0,			                XK_Print,                   spawn, 	        CALLCMD("maim -s | xclip -selection c -t image/png") },
 	{ MODKEY,                       XK_y,                       spawn,          {.v = ytdmenu } },
     { 0,                            XF86XK_AudioRaiseVolume,    spawn,          {.v = volup} },
     { 0,                            XF86XK_AudioLowerVolume,    spawn,          {.v = voldown} },
