@@ -87,7 +87,7 @@ static const Layout layouts[] = {
 	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
-#define SHCMD(cmd) { .v = (const char*[]){ "/bin/zsh", "-c", cmd, NULL } }
+#define SH(cmd) { .v = (const char*[]){ "/bin/zsh", "-c", cmd, NULL } }
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
@@ -95,17 +95,16 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "st", NULL };
 
 // Helper for spawning command
-#define CALLCMD(cmd) { .v = (const char*[]){"/bin/sh", "-c", cmd ,NULL} }
+#define RN(cmd) { .v = (const char*[]){"/bin/sh", "-c", cmd ,NULL} }
 
 /* custom commands */
 static const char *browser[]    = { "qutebrowser", NULL};
-//static const char *ss[]         = { "/usr/bin/maim", "-s", "|", "xclip", "-selection", "c", "-t", "image/png" ,NULL};
 static const char *upbright[]   = { "/usr/bin/xbacklight", "-inc", "5", NULL };
 static const char *downbright[] = { "/usr/bin/xbacklight", "-dec", "5", NULL };
 static const char *volup[]      = { "/usr/bin/pactl", "set-sink-volume", "0", "+5%", NULL };
 static const char *voldown[]    = { "/usr/bin/pactl", "set-sink-volume", "0", "-5%", NULL };
 static const char *volmute[]    = { "/usr/bin/pactl", "set-sink-mute", "0", "toggle", NULL };
-static const char *ytdmenu[]    = { "/usr/bin/ytfzf", "-D", NULL };
+//static const char *ytdmenu[]    = { "/usr/bin/ytfzf", "-D", NULL };
 
 /* keybinds */
 static Key keys[] = {
@@ -113,8 +112,10 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Tab,                     spawn,          {.v = dmenucmd } },
 	{ MODKEY,	                    XK_Return,                  spawn,          {.v = termcmd } },
 	{ MODKEY, 			            XK_f,	                    spawn,	        {.v = browser } },
-	{ 0,			                XK_Print,                   spawn, 	        CALLCMD("maim -s | xclip -selection c -t image/png") },
-	{ MODKEY,                       XK_y,                       spawn,          {.v = ytdmenu } },
+	{ ShiftMask,			        XK_Print,                   spawn, 	        SH("maim -s | xclip -selection c -t image/png") },
+	{ 0,			                XK_Print,                   spawn, 	        SH("maim ~/Picture/Screenshot/$(date +%d-%m-%y_%R).png") },
+	{ MODKEY,                       XK_y,                       spawn,          SH("ytfzf -D") },
+    { MODKEY|ShiftMask,             XK_y,                       spawn,          SH("ytfzf -SD") },
     { 0,                            XF86XK_AudioRaiseVolume,    spawn,          {.v = volup} },
     { 0,                            XF86XK_AudioLowerVolume,    spawn,          {.v = voldown} },
     { 0,                            XF86XK_AudioMute,           spawn,          {.v = volmute} },
