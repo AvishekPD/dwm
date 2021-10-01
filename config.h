@@ -28,7 +28,7 @@ static const char col_barfg[]	    = "#707070";
 static const char col_sel[]         = "#202020";
 static const char col_border1[]	    = "#717171";
 static const char col_border2[]	    = "#111111";
-static const char col_cyan[]        = "#005577";
+static const char col_select[]      = "#F1BE92";
 static const char col_trans[]	    = "#0000FF";
 static const char *colors[][3]      = {
 	/*                  fg         bg         border   */
@@ -36,7 +36,7 @@ static const char *colors[][3]      = {
 	[SchemeSel]         = { col_barfg, col_barbg, col_border1 },
     [SchemeStatus]      = { col_barfg, col_barbg, NULL },  /*  for border !used but !empty */
     [SchemeTagsNorm]    = { col_barfg, col_barbg, NULL },
-    [SchemeTagsSel]     = { col_barfg, col_sel,   NULL },
+    [SchemeTagsSel]     = { col_select, col_sel,   NULL },
     [SchemeInfoNorm]    = { col_barfg, col_barbg, NULL },
     [SchemeInfoSel]     = { col_barbg, col_barbg, NULL },
 };
@@ -52,7 +52,7 @@ static const char *tags[] = { "1:work", "2:Culture", "3:Social", "4:Moosic", "5:
 /* line under active tag */
 static const unsigned int ulinepad      = 5; /* horizontal padding between underline and tag */
 static const unsigned int ulinestroke   = 2; /* height of the underline */
-static const unsigned int ulinevoffset   = 0; /* how far the bottom of bar the ine should apper */
+static const unsigned int ulinevoffset  = 1; /* how far the bottom of bar the ine should apper */
 static const int unlineall              = 0; /* 1 to show underline on all tag / 0 for active ones */
 
 static const Rule rules[] = {
@@ -86,9 +86,6 @@ static const Layout layouts[] = {
 	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
 
-/* helper for spawning shell commands in the pre dwm-5.0 fashion */
-#define SH(cmd) { .v = (const char*[]){ "/bin/zsh", "-c", cmd, NULL } }
-
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_barbg , "-nf", col_barfg , "-sb", col_sel , "-sf", col_barfg , NULL };
@@ -109,13 +106,14 @@ static const char *volmute[]    = { "/usr/bin/pactl", "set-sink-mute", "0", "tog
 /* keybinds */
 static Key keys[] = {
 	/* modifier                     key                         function        argument */
-	{ MODKEY,                       XK_Tab,                     spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_Tab,                     spawn,          RN("dmenu_run -c -l 17") },
+    { MODKEY,                       XK_o,                       spawn,          RN("dmenu_websearch") },
 	{ MODKEY,	                    XK_Return,                  spawn,          {.v = termcmd } },
 	{ MODKEY, 			            XK_f,	                    spawn,	        {.v = browser } },
-	{ ShiftMask,			        XK_Print,                   spawn, 	        SH("maim -s | xclip -selection c -t image/png") },
-	{ 0,			                XK_Print,                   spawn, 	        SH("maim ~/Picture/Screenshot/$(date +%d-%m-%y_%R).png") },
-	{ MODKEY,                       XK_y,                       spawn,          SH("ytfzf -D") },
-    { MODKEY|ShiftMask,             XK_y,                       spawn,          SH("ytfzf -SD") },
+	{ ShiftMask,			        XK_Print,                   spawn, 	        RN("maim -s | xclip -selection c -t image/png") },
+	{ 0,			                XK_Print,                   spawn, 	        RN("maim ~/Picture/Screenshot/$(date +%d-%m-%y_%R).png && notify-send ' Saved Screenshot '") },
+	{ MODKEY,                       XK_y,                       spawn,          RN("ytfzf -D") },
+    { MODKEY|ShiftMask,             XK_y,                       spawn,          RN("ytfzf -SD") },
     { 0,                            XF86XK_AudioRaiseVolume,    spawn,          {.v = volup} },
     { 0,                            XF86XK_AudioLowerVolume,    spawn,          {.v = voldown} },
     { 0,                            XF86XK_AudioMute,           spawn,          {.v = volmute} },
