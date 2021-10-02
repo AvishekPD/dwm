@@ -36,7 +36,7 @@ static const char *colors[][3]      = {
 	[SchemeSel]         = { col_barfg, col_barbg, col_border1 },
     [SchemeStatus]      = { col_barfg, col_barbg, NULL },  /*  for border !used but !empty */
     [SchemeTagsNorm]    = { col_barfg, col_barbg, NULL },
-    [SchemeTagsSel]     = { col_select, col_sel,   NULL },
+    [SchemeTagsSel]     = { col_barfg, col_sel,   NULL },
     [SchemeInfoNorm]    = { col_barfg, col_barbg, NULL },
     [SchemeInfoSel]     = { col_barbg, col_barbg, NULL },
 };
