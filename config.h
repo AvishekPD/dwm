@@ -93,6 +93,8 @@ static const char *termcmd[]  = { "st", NULL };
 
 // Helper for spawning command
 #define RN(cmd) { .v = (const char*[]){"/bin/sh", "-c", cmd ,NULL} }
+#define screenshotsel RN("maim -s | xclip -selection c -t image/png")
+#define screenshot RN("maim ~/Picture/Screenshot/$(date +%d-%m-%y_%R).png && notify-send ' Saved Screenshot '") 
 
 /* custom commands */
 static const char *browser[]    = { "qutebrowser", NULL};
@@ -110,8 +112,8 @@ static Key keys[] = {
     { MODKEY,                       XK_o,                       spawn,          RN("dmenu_websearch") },
 	{ MODKEY,	                    XK_Return,                  spawn,          {.v = termcmd } },
 	{ MODKEY, 			            XK_f,	                    spawn,	        {.v = browser } },
-	{ ShiftMask,			        XK_Print,                   spawn, 	        RN("maim -s | xclip -selection c -t image/png") },
-	{ 0,			                XK_Print,                   spawn, 	        RN("maim ~/Picture/Screenshot/$(date +%d-%m-%y_%R).png && notify-send ' Saved Screenshot '") },
+	{ 0,			                XK_Print,                   spawn, 	        screenshot },
+	{ ShiftMask,			        XK_Print,                   spawn, 	        screenshotsel },
 	{ MODKEY,                       XK_y,                       spawn,          RN("ytfzf -D") },
     { MODKEY|ShiftMask,             XK_y,                       spawn,          RN("ytfzf -SD") },
     { 0,                            XF86XK_AudioRaiseVolume,    spawn,          {.v = volup} },
