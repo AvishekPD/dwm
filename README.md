@@ -1,4 +1,4 @@
-#Dwm is a simple dynamic window manager for X windowing system.  
+## Dwm is a simple dynamic window manager for X windowing system.  
 You can install it with using:
 
 ```shell
@@ -12,7 +12,7 @@ Feel free to Have fun with this.
 
 Wallpaper is included in file [picture.jpg](https://github.com/AvishekPD/dwm/blob/main/picture.jpg).
 
-## Features 
+### Features 
 - Not bloated, hopefully.
 - Simple with few patches.
 - Gaps included.
