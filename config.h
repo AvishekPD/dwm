@@ -113,7 +113,7 @@ static Key keys[] = {
 	{ MODKEY,	                    XK_Return,                  spawn,          {.v = termcmd } },
 	{ MODKEY, 			            XK_f,	                    spawn,	        {.v = browser } },
 	{ 0,			                XK_Print,                   spawn, 	        screenshot },
-	{ ShiftMask,			        XK_Print,                   spawn, 	        screenshotsel },
+	{ MODKEY|ShiftMask,			    XK_s,                       spawn, 	        screenshotsel },
 	{ MODKEY,                       XK_y,                       spawn,          RN("ytfzf -D") },
     { MODKEY|ShiftMask,             XK_y,                       spawn,          RN("ytfzf -SD") },
     { 0,                            XF86XK_AudioRaiseVolume,    spawn,          {.v = volup} },
